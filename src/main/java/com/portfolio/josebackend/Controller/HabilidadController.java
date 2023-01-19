@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/habilidad")
-@CrossOrigin(origins = "https://porftfoliojose.web.app")
+@CrossOrigin(origins = "https://porftfoliojose.web.app/")
 public class HabilidadController {
 
     @Autowired
