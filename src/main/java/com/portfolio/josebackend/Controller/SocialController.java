@@ -44,7 +44,7 @@ public class SocialController {
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody DtoSocial dtoSocial) {
         if (StringUtils.isBlank(dtoSocial.getName())) {
-            return new ResponseEntity(new Mensaje("Necesario insertar nombre"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Necesario nombre"), HttpStatus.BAD_REQUEST);
         }
         if (socialService.existsByName(dtoSocial.getName())) {
             return new ResponseEntity(new Mensaje("Item no registrado"), HttpStatus.BAD_REQUEST);
@@ -63,30 +63,6 @@ public class SocialController {
         socialService.save(social);
         return social;
     }
-
-    /*
-    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody DtoExperienciaLaboral dtoExperienciaLaboral) {
-        if (!experienciaLaboralService.existsById(id)) {
-            return new ResponseEntity(new Mensaje("Este Id no existe"), HttpStatus.BAD_REQUEST);
-        }
-        if (experienciaLaboralService.existsByName(dtoExperienciaLaboral.getName())
-                && experienciaLaboralService.getByName(dtoExperienciaLaboral.getName()).get().getId() != id) {
-            return new ResponseEntity(new Mensaje("Experiencia ya existente"), HttpStatus.BAD_REQUEST);
-        }
-        if (StringUtils.isBlank(dtoExperienciaLaboral.getName())) {
-            return new ResponseEntity(new Mensaje("Nombre requerido"), HttpStatus.BAD_REQUEST);
-        }
-
-        ExperienciaLaboral experienciaLaboral = experienciaLaboralService.getOne(id).get();
-        experienciaLaboral.setImage(dtoExperienciaLaboral.getImage());
-        experienciaLaboral.setName(dtoExperienciaLaboral.getName());
-        experienciaLaboral.setTitle(dtoExperienciaLaboral.getTitle());
-        experienciaLaboral.setDescription(dtoExperienciaLaboral.getDescription());
-        experienciaLaboral.setDate(dtoExperienciaLaboral.getDate());
-
-        experienciaLaboralService.save(experienciaLaboral);
-        return new ResponseEntity(new Mensaje("Experiencia Laboral Actualizada con éxito"), HttpStatus.OK);
-    }*/
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {

@@ -17,7 +17,7 @@ public class Social {
     public Social() {
     }
 
-    public Social(String name, String logo) {
+    public Social(String name, String image) {
         this.name = name;
         this.image = image;
     }
@@ -42,7 +42,7 @@ public class Social {
         return image;
     }
 
-    public void setLogo(String logo) {
+    public void setImage(String image) {
         this.image = image;
     }
 
